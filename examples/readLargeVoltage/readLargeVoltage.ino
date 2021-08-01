@@ -1,3 +1,15 @@
+
+//These lines added for platformIO compatibility
+#ifndef Arduino_h
+#include <Arduino.h>
+#endif
+
+#ifndef VoltageDivider_h
+#include "VoltageDivider.h"
+#endif
+
+
+
 /*
 Sometimes we find outselves needing to read voltages 
 much larger than our microcontroller can safely ready
@@ -14,22 +26,22 @@ voltage of 50V for a 5V referenceVoltage.
 
 What is the referenceVoltage of our microcontroller?
 */
-double referenceVoltage = 5.0;
+double vRef = 5.0;
 
 /*
 We need the sum of our resisters to equal some value,
 small enough so there isn't much noise on our ADC read,
 but large enough so we aren't dissapating much heat or frying
-the board. 10K is the recommended value for Arduino boards.
+the board. 10K Ohms is the recommended value for Arduino boards.
 */
-int totalResistance = 10000;
+double totalR = 10000;
 
 /*
 Now, what is the maximum voltage you'll be reading? 
 Realize the larger this number is, the lower resultion
 you'll effectively get from your ADC read.
 */
-double maxAnticipatedVoltage = 14.4; //say for a car battery
+double vMax = 14.4; //say for a car battery
 
 /*
 However, you'll probably want some tolerance in case of
@@ -37,18 +49,14 @@ a voltage spike, input a value (marginForError > 1), where
 a value of 1.2 represents a 20% margin for error on the 
 voltage. 
 */
-double marginForError = 1.2;
 
-double recommendedR2Value = (referenceVoltage*totalResistance)/(maxAnticipatedVoltage*marginForError);
-double recommendedR1Value = totalResistance = recommendedR2Value;
+double R2 = (vRef*totalR)/vMax;
+double R1 = totalR * (1 - (vRef/vMax));
+
+
 
 void setup() {
     Serial.begin(115200);
-    Serial.print("Based on your input specifications, I recommend ");
-    Serial.print(recommendedR1Value);
-    Serial.print(" Ohms for R1, and ");
-    Serial.print(recommendedR2Value); 
-    Serial.print(" Ohms for R2.");
 
     /*
     However, since you probably don't have exact resister values listed
@@ -62,4 +70,10 @@ void setup() {
 
 void loop() {
 
+    Serial.print("Based on your input specifications, I recommend ");
+    Serial.print(R1);
+    Serial.print(" Ohms for R1, and ");
+    Serial.print(R2); 
+    Serial.println(" Ohms for R2.\n");
+    delay(2000);
 }
