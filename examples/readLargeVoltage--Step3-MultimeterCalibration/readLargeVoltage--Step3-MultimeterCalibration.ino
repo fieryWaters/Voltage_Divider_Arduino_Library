@@ -9,13 +9,13 @@
 
   The voltageDivider will atttempt to correct the ADC reading to account
   for the circuit you put it in. However, due to errors in the resistors
-  or elsewhere, the value may be off by a linear factor. This sketch is 
+  or elsewhere, the value may be off by a linear factor. This sketch is
   designed to find this implementation-specific linear factor,
-  and account for it.  
+  and account for it.
 
-  To use this sketch, measure your analog pin with a multimeter 
+  To use this sketch, measure your analog pin with a multimeter
   and update the multimeterVoltage variable below, then run the sketch.
-  It will tell you a value to use for your correctionFactor, update
+  It will tell you a value to use for your correctionFactor. Update
   correctionFactor as instructed until the battery.getVoltage() call
   returns a value sufficiently close to your multimeter's measured value.
 
@@ -25,7 +25,7 @@
   IMPORTANT: If (newCorrectionFactor > 1.1) || (newCorrectionFactor < .9),
     YOU PROBABLY MADE AN ERROR IN YOUR CIRCUIT BEWARE!
  */
- 
+
 byte precision = 4;
 int highSideResister = 5000;//MEASURE WITH MULTIMETER AND UPDATE THIS
 int lowSideResister = 5000;//MEASURE WITH MULTIMETER AND UPDATE THIS
@@ -53,7 +53,7 @@ void loop() {
   Serial.println(newCorrectionFactor,precision);
   Serial.println("Now save this value for reference and update correctionFactor in the sketch\n");
 
-  delay(1000); 
+  delay(1000);
 
 
 }

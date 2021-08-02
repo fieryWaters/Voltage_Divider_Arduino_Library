@@ -5,16 +5,19 @@
 #endif
 
 /*
-  If your circuit is already wired, and you can't be bothered to 
+  If your circuit is already wired, and you can't be bothered to
   measure individual components, or you wish to use VoltageDivider
   without resisters in your implementation, simply declare the pin
-  and a custom correction factor. 
+  and a custom correction factor.
 
   The correctionFactor simply multiplies any ADC reading by a linear factor.
 
-  Measure your analogPin with a voltage, and update the variable
+  Measure your analogPin with a multimeter, and update the variable
+  correctionFactor below as instructed by the sketch. Once the circuit is
+  tuned properly, delete the code in the loop and use battery.getVoltage()
+  to your heart's content. 
  */
- 
+
 byte precision = 4;
 int analogPin = A0;
 double correctionFactor = 1.00; //replace this value with the value recommended below
@@ -39,7 +42,7 @@ void loop() {
   Serial.println(newCorrectionFactor,precision);
   Serial.println("Now save this value for reference and update correctionFactor in the sketch\n");
 
-  delay(1000); 
+  delay(1000);
 
 
 }
