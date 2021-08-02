@@ -13,10 +13,10 @@
 class VoltageDivider
 {
 	public:
-		VoltageDivider(uint32_t r1, uint32_t r2, uint8_t pin, double reverenceVoltage = 5, double errorFactor = 1);
+		VoltageDivider(uint32_t r1, uint32_t r2, uint8_t pin, double reverenceVoltage = 5, double correctionFactor = 1);
 		VoltageDivider(uint8_t pin, double correctionFactor = 1);
 		double getVoltage();
-		double getErrorFactor();
+		double getCorrectionFactor(double adcVoltage, double multimeterVoltage);
 
 	private:
 		uint32_t resister1, resister2;//R1 on high voltage side, R2 on low voltage side

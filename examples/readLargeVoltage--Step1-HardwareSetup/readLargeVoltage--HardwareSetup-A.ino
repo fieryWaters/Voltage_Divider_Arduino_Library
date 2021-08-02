@@ -50,6 +50,7 @@ double R2Recommended = (vRef*totalR)/vMax;
 double R1Recommended = totalR * (1 - (vRef/vMax));
 
 
+
 void setup() {
     Serial.begin(115200);
 
