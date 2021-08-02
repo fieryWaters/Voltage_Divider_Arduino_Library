@@ -1,3 +1,5 @@
+//Author Jacob Waters
+
 /*
  * This class is designed to read coltage values above the maximum value arduino can read of 5V.
  *

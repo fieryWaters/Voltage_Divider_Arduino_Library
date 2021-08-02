@@ -1,3 +1,4 @@
+//Author Jacob Waters
 
 //These lines added for platformIO compatibility
 #ifndef Arduino_h

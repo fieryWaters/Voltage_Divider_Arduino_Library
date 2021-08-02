@@ -1,3 +1,4 @@
+//Author Jacob Waters
 #ifndef VoltageDivider_h
 #include "VoltageDivider.h"
 #endif

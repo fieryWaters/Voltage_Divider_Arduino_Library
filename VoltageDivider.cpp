@@ -1,3 +1,5 @@
+//Author Jacob Waters
+
 /*
  * This is the source code for my VoltageDivider class.
  */

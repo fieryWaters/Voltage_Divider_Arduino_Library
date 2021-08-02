@@ -1,3 +1,4 @@
+//Author Jacob Waters
 #include "VoltageDivider.h"
 //lets see
 int highSideResister = 990;//1K Ohm resister
